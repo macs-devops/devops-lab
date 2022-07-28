@@ -6,3 +6,5 @@ Custom SAML 2.0 application_ins-4bdc1a19c83a8790.xml
 .DS_Store
 aws/.DS_Store
 aws/terraform/max-devops.tfvars
+aws/terraform/.terraform.lock.hcl
+aws/terraform/.terraform/
