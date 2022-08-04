@@ -10,4 +10,4 @@ jobs:
         uses: xntrik/hcltm-action@v0.0.5
         with:
           command: 'validate'
-          files: 'aws/terraform/**'
+          files: './aws/terraform/*'
