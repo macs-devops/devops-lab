@@ -1,11 +1,9 @@
 name: Apply plan
 
 on:
-  workflow_run:
-    workflows: ["Validate terraform"]
-    branches: [main]
-    types: 
-      - completed
+  push:
+    branches:
+      - main
 
 jobs:
   plan:
