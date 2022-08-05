@@ -30,7 +30,7 @@ jobs:
         AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
         working-directory: 'aws/terraform'
 
-      run: terraform init --var-file=max-devops.tfvars
+      run: terraform init --var-file=aws/terraform/max-devops.tfvars
       working-directory: ${{ env.working-directory }}
 
     - name: terraform validation
@@ -44,5 +44,5 @@ jobs:
         AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
         working-directory: 'aws/terraform'
 
-      run: terraform plan -auto-approve --var-file=max-devops.tfvars
+      run: terraform plan -auto-approve --var-file=aws/terraform/max-devops.tfvars
       working-directory: ${{ env.working-directory }}
