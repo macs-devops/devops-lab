@@ -8,7 +8,7 @@ on:
 jobs:
   plan:
     runs-on: ubuntu-latest
-    name: Apply terraform plan
+    name: apply terraform plan
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       TF_ACTION_WORKING_DIR: 'aws/terraform'
@@ -17,6 +17,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      
+      - name: terraform init
+        id: init
+        run: terraform -chdir=/home/runner/work/devops-lab/devops-lab/main init \
+          -backend-config="access_key= \${{ secrets.AWS_ACCESS_KEY }}" \
+          -backend-config="secret_key= \${{ secrets.AWS_SECRET_ACCESS_KEY}}"
 
       - name: terraform apply
         uses: dflook/terraform-apply@v1
@@ -25,7 +31,7 @@ jobs:
         with:
           path: 'aws/terraform'
 
-      - name: Retry failed apply
+      - name: retry failed apply
         uses: dflook/terraform-apply@v1
         if: ${{ steps.first_try.outputs.failure-reason == 'apply-failed' }}
         with:
