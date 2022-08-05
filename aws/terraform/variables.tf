@@ -103,8 +103,3 @@ variable "tags" {
   type        = map(string)
 }
 
-variable "db_username" {
-  description = "Database administrator username"
-  type        = string
-  sensitive   = true
-}
