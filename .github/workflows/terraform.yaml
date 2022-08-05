@@ -1,15 +1,16 @@
 name: Apply plan
 
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: ["Validate terraform"]
+    branches: [main]
+    types: 
+      - completed
 
 jobs:
   plan:
     runs-on: ubuntu-latest
     name: apply terraform plan
-    needs: Validate terraform
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       TF_ACTION_WORKING_DIR: 'aws/terraform'
