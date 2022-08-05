@@ -11,26 +11,36 @@ jobs:
     - name: install terraform
       env:
         TERRAFORM_VERSION: "0.12.15"
+        working-directory: 'aws/terraform'
       run: |
         tf_version=$TERRAFORM_VERSION
         wget https://releases.hashicorp.com/terraform/"$tf_version"/terraform_"$tf_version"_linux_amd64.zip
         unzip terraform_"$tf_version"_linux_amd64.zip
         sudo mv terraform /usr/local/bin/
+      working-directory: ${{ env.working-directory }}
     
     - name: verify terraform version
       run: terraform --version
+      working-directory: ${{ env.working-directory }}
 
     - name: terraform init
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        working-directory: 'aws/terraform'
+
       run: terraform init -input=false
+      working-directory: ${{ env.working-directory }}
 
     - name: terraform validation
       run: terraform validate
+      working-directory: ${{ env.working-directory }}
 
     - name: terraform apply
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        working-directory: 'aws/terraform'
+
       run: terraform apply -auto-approve -input=false
+      working-directory: ${{ env.working-directory }}
