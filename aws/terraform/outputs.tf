@@ -18,7 +18,7 @@ output "dynamodb_lock_stream_label" {
   value = module.backend.dynamodb_lock_stream_label
 }
 
-output "iam_role_arn_github" {
-  description = "ARN of the IAM role."
-  value       = module.aws_oidc_github.iam_role_arn
+output "github_actions_roles" {
+  value = module.oidc_auth.roles
 }
+
