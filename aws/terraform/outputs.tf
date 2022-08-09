@@ -18,7 +18,3 @@ output "dynamodb_lock_stream_label" {
   value = module.backend.dynamodb_lock_stream_label
 }
 
-output "github_actions_roles" {
-  value = module.oidc_auth.roles
-}
-
