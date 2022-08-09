@@ -1,67 +1,44 @@
-name: tf-ci
+name: tf-ci 
 on:
-  [push, pull_request]
+  push:
 
 env:
   AWS_REGION: us-east-1
   AWS_ROLE_ARN: arn:aws:iam::593043004533:role/github_role
   WORK_DIR: 'aws/terraform'
-
 jobs:
-  get-caller-identity:
+  terraform_plan:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
       contents: read
     steps:
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          role-to-assume: ${{ env.AWS_ROLE_ARN }}
-          aws-region: ${{ env.AWS_REGION }}
-        run: aws sts get-caller-identity
+    - uses: actions/checkout@v1
+      with:
+        role-to-assume: ${{ env.AWS_ROLE_ARN }}
+        aws-region: ${{ env.AWS_REGION }}
+    - name: install terraform
+      env:
+        TERRAFORM_VERSION: "1.2.5"
+      run: |
+        tf_version=$TERRAFORM_VERSION
+        wget https://releases.hashicorp.com/terraform/"$tf_version"/terraform_"$tf_version"_linux_amd64.zip
+        unzip terraform_"$tf_version"_linux_amd64.zip
+        sudo mv terraform /usr/local/bin/
+      working-directory: ${{ env.WORK_DIR }}
 
-  terraform_plan:
-    runs-on: ubuntu-latest
-    steps:
-      - name: install terraform
-        uses: actions/checkout@v1
-        env:
-          TERRAFORM_VERSION: "1.2.5"
-        with:
-          role-to-assume: ${{ env.AWS_ROLE_ARN }}
-          aws-region: ${{ env.AWS_REGION }}
-        run: |
-          tf_version=$TERRAFORM_VERSION
-          wget https://releases.hashicorp.com/terraform/"$tf_version"/terraform_"$tf_version"_linux_amd64.zip
-          unzip terraform_"$tf_version"_linux_amd64.zip
-          sudo mv terraform /usr/local/bin/
-        working-directory: ${{ env.WORK_DIR }}
-    
-      - name: verify terraform version
-        with:
-          role-to-assume: ${{ env.AWS_ROLE_ARN }}
-          aws-region: ${{ env.AWS_REGION }}
-        run: terraform --version
-        working-directory: ${{ env.WORK_DIR }}
+    - name: verify terraform version
+      run: terraform --version
+      working-directory: ${{ env.WORK_DIR }}
 
-      - name: terraform init
-        with:
-          role-to-assume: ${{ env.AWS_ROLE_ARN }}
-          aws-region: ${{ env.AWS_REGION }}
-        run: terraform init --var-file=aws/terraform/max-devops.tfvars
-        working-directory: ${{ env.WORK_DIR }}
+    - name: terraform init 
+      run: terraform init --var-file=aws/terraform/max-devops.tfvars
+      working-directory: ${{ env.WORK_DIR }}
 
-      - name: terraform validation
-        with:
-          role-to-assume: ${{ env.AWS_ROLE_ARN }}
-          aws-region: ${{ env.AWS_REGION }}
-        run: terraform validate
-        working-directory: ${{ env.WORK_DIR }}
+    - name: terraform validation
+      run: terraform validate
+      working-directory: ${{ env.WORK_DIR }}
 
-      - name: terraform plan        
-        with:
-          role-to-assume: ${{ env.AWS_ROLE_ARN }}
-          aws-region: ${{ env.AWS_REGION }}
-        run: terraform plan -auto-approve --var-file=aws/terraform/max-devops.tfvars
-        working-directory: ${{ env.WORK_DIR }}
+    - name: terraform plan
+      run: terraform plan -auto-approve --var-file=aws/terraform/max-devops.tfvars
+      working-directory: ${{ env.WORK_DIR }}
