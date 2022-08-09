@@ -32,7 +32,7 @@ jobs:
       working-directory: ${{ env.WORK_DIR }}
 
     - name: terraform init 
-      run: terraform init --var-file=aws/terraform/max-devops.tfvars
+      run: terraform init --var-file=aws/terraform/max-devops.tfvars -reconfigure
       working-directory: ${{ env.WORK_DIR }}
 
     - name: terraform validation
