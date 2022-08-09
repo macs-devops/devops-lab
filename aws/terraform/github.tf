@@ -11,7 +11,7 @@ resource "aws_iam_openid_connect_provider" "github_actions" {
 }
 
 module "github_actions_role" {
-  source               = "https://github.com/macs-devops/tf-aws-github-actions-oidc-role"
+  source               = "github.com/macs-devops/tf-aws-github-actions-oidc-role"
   role_name            = "github_role"
   repo_to_allow_assume = var.repo_to_allow_assume
   branches_to_allow_assume = [
