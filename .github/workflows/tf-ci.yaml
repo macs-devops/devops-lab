@@ -19,7 +19,7 @@ jobs:
         with:
           role-to-assume: ${{ env.AWS_ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
-      - run: aws sts get-caller-identity
+        run: aws sts get-caller-identity
 
   terraform_plan:
     runs-on: ubuntu-latest
@@ -31,7 +31,7 @@ jobs:
         with:
           role-to-assume: ${{ env.AWS_ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
-      - run: |
+        run: |
           tf_version=$TERRAFORM_VERSION
           wget https://releases.hashicorp.com/terraform/"$tf_version"/terraform_"$tf_version"_linux_amd64.zip
           unzip terraform_"$tf_version"_linux_amd64.zip
@@ -42,26 +42,26 @@ jobs:
         with:
           role-to-assume: ${{ env.AWS_ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
-      - run: terraform --version
+        run: terraform --version
         working-directory: ${{ env.WORK_DIR }}
 
       - name: terraform init
         with:
           role-to-assume: ${{ env.AWS_ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
-      - run: terraform init --var-file=aws/terraform/max-devops.tfvars
+        run: terraform init --var-file=aws/terraform/max-devops.tfvars
         working-directory: ${{ env.WORK_DIR }}
 
       - name: terraform validation
         with:
           role-to-assume: ${{ env.AWS_ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
-      - run: terraform validate
+        run: terraform validate
         working-directory: ${{ env.WORK_DIR }}
 
       - name: terraform plan        
         with:
           role-to-assume: ${{ env.AWS_ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
-      - run: terraform plan -auto-approve --var-file=aws/terraform/max-devops.tfvars
+        run: terraform plan -auto-approve --var-file=aws/terraform/max-devops.tfvars
         working-directory: ${{ env.WORK_DIR }}
