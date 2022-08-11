@@ -1,5 +1,4 @@
 name: "Terraform Plan"
-
 # Trigger when a pull request is received
 on:
   push:
@@ -8,6 +7,9 @@ jobs:
   terraform-plan:
     name: "Terraform Plan"
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: "aws/terraform"
     steps:
       # Checkout the code
       # Marketplace: https://github.com/marketplace/actions/checkout
@@ -33,7 +35,7 @@ jobs:
       # Downloads a specific version of Terraform CLI and adds it to PATH
       # Marketplace: https://github.com/marketplace/actions/hashicorp-setup-terraform
       - name: "Setup - Terraform CLI"
-        uses: hashicorp/setup-terraform@v1.0.1
+        uses: hashicorp/setup-terraform@v2
 
       # Init pulls credentials from the .aws/credentials file by default
       - name: "Run - Terraform Init"
