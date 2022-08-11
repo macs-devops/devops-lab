@@ -18,7 +18,7 @@ resource "aws_kms_key" "this" {
             "Sid": "Enable IAM User Permissions",
             "Effect": "Allow",
             "Principal": {
-                "AWS": "arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"
+                "AWS": "arn:aws:iam::${data.aws_caller_identity.current.account_id}:user/Administrator"
             },
             "Action": "kms:*",
             "Resource": "*"
@@ -112,9 +112,10 @@ resource "aws_s3_bucket_public_access_block" "this" {
 
 terraform {
   backend "s3" {
-    bucket = "max-gh-tfstate"
-    key    = "github-tf/terraform.tfstate"
-    region = "us-east-1"
+    bucket  = "tf-state-max-devops"
+    key     = "github-tf/terraform.tfstate"
+    region  = "us-east-1"
+    profile = "max-devops-adm"
   }
 }
 
