@@ -2,7 +2,7 @@ name: "Terraform Plan"
 
 # Trigger when a pull request is received
 on:
-  pull_request:
+  push:
 
 jobs:
   terraform-plan:
