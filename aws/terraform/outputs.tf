@@ -1,20 +1,10 @@
-output "s3_backend_bucket_name" {
-  value = module.backend.s3_backend_bucket_name
+output "role-arn" {
+  description = "The role ARN"
+  value       = aws_iam_role.default.arn
 }
 
-output "dynamodb_lock_table_name" {
-  value = module.backend.dynamodb_lock_table_name
+#aws_kms_key
+output "kms-arn" {
+  description = "The kms key arn"
+  value       = aws_kms_key.this.arn
 }
-
-output "dynamodb_lock_table_arn" {
-  value = module.backend.dynamodb_lock_table_arn
-}
-
-output "dynamodb_lock_stream_arn" {
-  value = module.backend.dynamodb_lock_stream_arn
-}
-
-output "dynamodb_lock_stream_label" {
-  value = module.backend.dynamodb_lock_stream_label
-}
-
