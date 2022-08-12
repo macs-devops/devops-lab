@@ -1,4 +1,5 @@
 resource "aws_s3_bucket" "gh-bucket" {
+  region = var.region
   bucket = "gh-actions-automation"
   acl    = "private"
 
