@@ -23,7 +23,6 @@ terraform {
 
 provider "aws" {
   region = "us-east-1"
-  assume_role {
-    role_arn = "arn:aws:iam::593043004533:role/github_role"
-  }
+  region                  = "us-east-1"
+  profile                 = "max-devops"
 }
