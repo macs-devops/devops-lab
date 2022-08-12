@@ -22,8 +22,8 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-east-1"
-  #profile = "max-devops-adm"
+  region                   = "us-east-1"
+  profile                  = "max-devops-adm"
   shared_config_files      = ["~/.aws/config"]
   shared_credentials_files = ["~/.aws/credentials"]
 
