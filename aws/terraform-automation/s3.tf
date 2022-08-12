@@ -6,15 +6,15 @@ resource "aws_s3_bucket" "gh-bucket" {
     enabled = true
   }
 
+  logging {
+    target_bucket = aws_s3_bucket.gh-bucket.id
+    target_prefix = "log/"
+  }
+
   tags = {
     Name  = "gh-actions"
     Owner = "max-devops"
   }
-}
-
-logging {
-  target_bucket = aws_s3_bucket.gh-bucket.id
-  target_prefix = "log/"
 }
 
 resource "aws_kms_key" "gh-kms" {
