@@ -18,11 +18,6 @@ resource "aws_s3_bucket" "gh-bucket" {
         sse_algorithm     = "aws:kms"
       }
     }
-
-    tags = {
-      Name  = "gh-actions"
-      Owner = "max-devops"
-    }
   }
 }
 
