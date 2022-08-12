@@ -1,4 +1,0 @@
-version: 0.1
-resource_usage:
-  aws_instance.web_app:
-    operating_system: linux 
