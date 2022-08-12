@@ -11,18 +11,19 @@ terraform {
   }
   required_version = ">= 0.14"
 
-  #backend "remote" {
-  #  hostname     = "app.terraform.io"
-  #  organization = "max-devops"
+  backend "remote" {
+    hostname     = "app.terraform.io"
+    organization = "max-devops"
 
-  #  workspaces {
-  #    name = "github_actions"
-  #  }
-  #}
-  backend "s3" {
-    bucket  = "tf-state-max-devops"
-    key     = "github-tf/terraform.tfstate"
-    region  = "us-east-1"
-    profile = "max-devops-adm"
+    workspaces {
+      name = "github_actions"
+    }
+  }
+}
+
+provider "aws" {
+  region = "us-east-1"
+  assume_role {
+    role_arn = "arn:aws:iam::593043004533:role/github_role"
   }
 }
