@@ -1,8 +1,11 @@
-module "github-actions-oidc" {
-  source  = "hectcastro/github-actions-oidc/aws"
-  version = "0.1.0"
+resource "aws_iam_openid_connect_provider" "github" {
+  url = "https://token.actions.githubusercontent.com"
 
-  github_org          = "macs-devops"
-  github_repo         = "devops-lab"
-  github_custom_claim = "ref:refs/heads/main" # insert the 2 required variables here
+  client_id_list = [
+    "sts.amazonaws.com",
+  ]
+
+  thumbprint_list = [
+    "6938fd4d98bab03faadb97b34396831e3780aea1"
+  ]
 }
