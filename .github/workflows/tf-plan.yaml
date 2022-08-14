@@ -17,4 +17,4 @@ jobs:
         with:
           path: terraform
           var_file: |
-              max-devops.tfvars
+              terraform/max-devops.tfvars
