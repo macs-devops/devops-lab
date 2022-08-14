@@ -2,6 +2,6 @@
 provider "aws" {
   version                 = "~> 4.0"
   region                  = "us-east-1"
-  shared_credentials_file = "~/.aws/credentials"
+  shared_credentials_file = "/Users/maximiliano.florentin/.aws/credentials"
   profile                 = "max-devops-adm"
 }
