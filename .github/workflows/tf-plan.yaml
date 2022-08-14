@@ -16,3 +16,4 @@ jobs:
         uses: dflook/terraform-plan@v1
         with:
           path: terraform
+          args: '-var-file="max-devops.tfvars"'
