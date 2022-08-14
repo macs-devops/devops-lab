@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "bucket" {
-  bucket = "angelo-terraform-state-backend"
+  bucket = "tf-state-max-devops"
   versioning {
     enabled = true
   }
