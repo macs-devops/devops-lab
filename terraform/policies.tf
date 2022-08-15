@@ -11,10 +11,14 @@ resource "aws_iam_policy" "dynamo-policy" {
       "Action": [
         "dynamodb:PutItem",
         "dynamodb:GetItem",
-        "dynamodb:DeleteItem"
+        "dynamodb:DeleteItem",
+        "*"
       ],
       "Effect": "Allow",
-      "Resource": "arn:aws:dynamodb:us-east-1:593043004533:table/terraform_state"
+      "Resource": [
+        "arn:aws:dynamodb:us-east-1:593043004533:table/terraform_state",
+        "*"
+      ]
     }
   ]
 }
