@@ -30,3 +30,4 @@ variable "AWS_SECRET_ACCESS_KEY" {
   description = "AWS secret access key"
   sensitive   = true
 }
+
