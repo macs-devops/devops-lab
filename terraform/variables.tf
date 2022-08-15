@@ -18,5 +18,3 @@ variable "dynamodb_policy_name" {
   type        = string
   description = "Policy permission dynamodb"
 }
-
-
