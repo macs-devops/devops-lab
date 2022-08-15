@@ -3,12 +3,10 @@ variable "github_org" {
   description = "GitHub organization to scope access"
 }
 
-
 variable "github_repo" {
   type        = string
   description = "GitHub repository to scope access"
 }
-
 
 variable "github_custom_claim" {
   type        = string
@@ -16,22 +14,9 @@ variable "github_custom_claim" {
   description = "GitHub custom OIDC claim to scope access"
 }
 
-
 variable "dynamodb_policy_name" {
   type        = string
   description = "Policy permission dynamodb"
-}
-
-
-variable "AWS_ACCESS_KEY_ID" {
-  type      = string
-  sensitive = true
-}
-
-
-variable "AWS_SECRET_ACCESS_KEY" {
-  type      = string
-  sensitive = true
 }
 
 
