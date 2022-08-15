@@ -18,3 +18,15 @@ variable "dynamodb_policy_name" {
   type        = string
   description = "Policy permission dynamodb"
 }
+
+variable "AWS_ACCESS_KEY_ID" {
+  type        = string
+  description = "AWS access key id"
+  sensitive   = true
+}
+
+variable "AWS_SECRET_ACCESS_KEY" {
+  type        = string
+  description = "AWS secret access key"
+  sensitive   = true
+}
