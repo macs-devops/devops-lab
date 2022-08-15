@@ -13,3 +13,8 @@ variable "github_custom_claim" {
   default     = "ref:refs/heads/main"
   description = "GitHub custom OIDC claim to scope access"
 }
+
+variable "dynamodb_policy_name" {
+  type        = string
+  description = "Policy permission dynamodb"
+}
