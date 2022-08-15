@@ -12,6 +12,7 @@ resource "aws_iam_policy" "dynamo-policy" {
         "dynamodb:PutItem",
         "dynamodb:GetItem",
         "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable",
         "*"
       ],
       "Effect": "Allow",
