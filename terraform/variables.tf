@@ -19,12 +19,3 @@ variable "dynamodb_policy_name" {
   description = "Policy permission dynamodb"
 }
 
-variable "AWS_ACCESS_KEY_ID" {
-  type        = string
-  description = "github secret AWS_ACCESS_KEY_ID"
-}
-
-variable "AWS_SECRET_ACCESS_KEY" {
-  type        = string
-  description = "github secret AWS_SECRET_ACCESS_KEY"
-}
