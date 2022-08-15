@@ -27,6 +27,6 @@ EOF
 }
 
 resource "aws_iam_role_policy_attachment" "dynamodb-attach" {
-  role       = "arn:aws:iam::593043004533:role/github_role"
+  role       = "github_role"
   policy_arn = aws_iam_policy.dynamo-policy.arn
 }
