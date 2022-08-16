@@ -1,8 +1,5 @@
 resource "aws_s3_bucket" "bucket" {
   bucket = "tf-state-max-devops"
-  versioning {
-    enabled = true
-  }
 
   tags = {
     Name = "S3 Remote Terraform State Store"
