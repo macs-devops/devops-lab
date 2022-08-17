@@ -9,7 +9,7 @@ on:
 env:
   AWS_REGION: us-east-1
   # The role we set up in our bootstrap Terraform environment
-  AWS_ROLE_ARN: ${{ env.AWS_ROLE_ARN }}
+  AWS_ROLE_ARN: ${{ secrets.AWS_ROLE_ARN }}
 
 # Because we need the id-token permission, we have to specify all the
 # permissions that we need.
