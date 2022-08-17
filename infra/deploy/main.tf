@@ -15,15 +15,3 @@ module "remote_state" {
   terraform_state_file               = "deploy/terraform.tfstate"
   force_destroy                      = false
 }
-
-module "ssm_bastion" {
-  source = "../ssm"
-
-  aws_region         = var.aws_region
-  enabled            = var.bastion_enabled
-  namespace          = var.namespace
-  private_subnet_ids = var.bastion_private_subnet_ids
-  tags               = var.tags
-  tunnel_ports       = var.bastion_tunnel_ports
-  vpc_id             = var.bastion_vpc_id
-}

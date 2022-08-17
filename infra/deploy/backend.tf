@@ -6,8 +6,8 @@ terraform {
     bucket         = "terraform-tfstate-593043004533"
     key            = "deploy/terraform.tfstate"
     dynamodb_table = "terraform-tfstate-593043004533-lock"
-    profile        = "max-devops-admº"
     role_arn       = "arn:aws:iam::593043004533:role/terraform-github-action"
     encrypt        = "true"
+    profile        = "max-devops-adm"
   }
 }
