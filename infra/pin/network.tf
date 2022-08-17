@@ -10,7 +10,7 @@ resource "aws_vpc" "pin" {
 } # end resource
 
 resource "aws_subnet" "pin_subnet" {
-  vpc_id                  = aws_vpc.My_VPC.id
+  vpc_id                  = aws_vpc.pin.id
   cidr_block              = var.subnetCIDRblock
   map_public_ip_on_launch = var.mapPublicIP
   availability_zone       = var.availabilityZone
