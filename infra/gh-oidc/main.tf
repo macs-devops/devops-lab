@@ -15,25 +15,3 @@ module "iam_role" {
 }
 
 data "aws_caller_identity" "current" {}
-
-resource "aws_iam_policy" "bootstrap" {
-  name        = "${local.role_name}-bootstrap"
-  description = "Access to provision the tfstate-backend module"
-
-  policy = templatefile("${path.module}/bootstrap-policy.json", {
-    aws_account_id = data.aws_caller_identity.current.account_id
-    namespace      = var.namespace
-  })
-}
-
-resource "aws_iam_policy" "main" {
-  name        = "${local.role_name}-main"
-  description = "Access to provision resources for the ${var.github_repo} repo"
-
-  policy = templatefile("${path.module}/main-policy.json", {
-    aws_account_id = data.aws_caller_identity.current.account_id
-    namespace      = var.namespace
-    tag_key        = var.tag_condition.key
-    tag_value      = var.tag_condition.value
-  })
-}
