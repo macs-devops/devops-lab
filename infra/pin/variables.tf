@@ -39,4 +39,3 @@ variable "egressCIDRblock" {
 variable "mapPublicIP" {
   default = true
 }
-
