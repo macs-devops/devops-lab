@@ -7,11 +7,11 @@ variable "instanceTenancy" {
 }
 
 variable "dnsSupport" {
-  default = true
+  default = false
 }
 
 variable "dnsHostNames" {
-  default = true
+  default = false
 }
 
 variable "vpcCIDRblock" {
