@@ -1,4 +1,4 @@
-name: "setup terraform"
+name: "pin setup terraform"
 
 on:
   push:
@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: infra/gh-oidc
+        working-directory: infra/pin
 
     steps:
       - name: Checkout
