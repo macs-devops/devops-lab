@@ -6,7 +6,7 @@ module "ec2_instance" {
 
   ami                    = "ami-052efd3df9dad4825"
   instance_type          = "t2.micro"
-  key_name               = "pin-2022"
+  key_name               = "pin2022"
   monitoring             = true
   vpc_security_group_ids = ["sg-0fd5214d272e690d6"]
   subnet_id              = "subnet-00874fe6cd236e4b2"
