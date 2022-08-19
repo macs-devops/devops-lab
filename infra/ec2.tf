@@ -4,7 +4,7 @@ module "ec2_instance" {
 
   name = "single-instance"
 
-  ami                    = "ami-08ae71fd7f1449df1"
+  ami                    = "ami-052efd3df9dad4825"
   instance_type          = "t2.micro"
   key_name               = "pin-2022"
   monitoring             = true
