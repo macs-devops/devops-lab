@@ -14,7 +14,7 @@ resource "aws_instance" "pin2022" {
 }
 
 resource "aws_security_group" "pin" {
-  name = "sg-pin2022"
+  name = "pin2022"
 
   ingress {
     from_port   = 80
