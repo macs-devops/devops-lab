@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: infra/gh-oidc
+        working-directory: infra
 
     steps:
       - name: Checkout
@@ -47,6 +47,16 @@ jobs:
           role-to-assume: ${{ env.AWS_ROLE_ARN }}
           role-session-name: GitHubActions-${{ github.run_id }}-${{ github.run_number }}
           aws-region: ${{ env.AWS_REGION }}
+
+      - name: Get remote state
+        uses: dflook/terraform-remote-state@v1
+        id: remote-state
+        with:
+          backend_type: s3
+          backend_config: |
+            bucket=terraform-tfstate-593043004533
+            key=deploy/terraform.tfstate
+            region=${{ env.AWS_REGION }}
 
       - name: Terraform Init
         id: init

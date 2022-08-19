@@ -4,7 +4,7 @@
         {
             "Effect": "Allow",
             "Action": [
-                "s3:CreateBucket"
+                "s3:*"
             ],
             "Resource": [
                 "arn:aws:s3:::${namespace}-tfstate-${aws_account_id}"
