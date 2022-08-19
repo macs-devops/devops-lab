@@ -11,7 +11,7 @@ data "aws_ami" "ubuntu" {
     values = ["hvm"]
   }
 
-  owners = ["max-devops"] # Canonical
+  owners = ["593043004533"] # Canonical
 }
 
 resource "aws_instance" "web" {
