@@ -5,6 +5,8 @@ resource "aws_instance" "pin2022" {
 
   user_data = file("userdata.sh")
 
+  vpc_security_group_ids = [aws_security_group.pin.id]
+
   tags = {
     Terraform   = "true"
     Environment = "terraform"
