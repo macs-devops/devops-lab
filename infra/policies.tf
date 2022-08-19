@@ -1,6 +1,6 @@
 resource "aws_iam_policy" "pin2022-ec2-policy" {
-  name        = "test-policy"
-  description = "A test policy"
+  name        = "pin2022-ec2-policy"
+  description = "Policy github actions ec2"
 
   policy = <<EOF
 {
@@ -21,7 +21,7 @@ resource "aws_iam_policy" "pin2022-ec2-policy" {
 EOF
 }
 
-resource "aws_iam_role_policy_attachment" "test-attach" {
+resource "aws_iam_role_policy_attachment" "policy-ec2-attach" {
   role       = "terraform-github-action"
   policy_arn = aws_iam_policy.pin2022-ec2-policy.arn
 }
