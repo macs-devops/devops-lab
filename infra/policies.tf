@@ -20,8 +20,3 @@ resource "aws_iam_policy" "pin2022-ec2-policy" {
 }
 EOF
 }
-
-resource "aws_iam_role_policy_attachment" "policy-ec2-attach" {
-  role       = "terraform-github-action"
-  policy_arn = aws_iam_policy.pin2022-ec2-policy.arn
-}
