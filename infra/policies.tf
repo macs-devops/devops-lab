@@ -20,3 +20,8 @@ resource "aws_iam_policy" "pin2022-ec2-policy" {
 }
 EOF
 }
+
+resource "aws_iam_role_policy_attachment" "github-eks-policy" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+  role       = "terraform-github-action"
+}
