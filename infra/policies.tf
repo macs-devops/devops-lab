@@ -1,8 +1,3 @@
-resource "aws_iam_role_policy_attachment" "github-admin-policy" {
-  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
-  role       = "terraform-github-action"
-}
-
 resource "aws_iam_policy" "pin2022-ec2-policy" {
   name        = "pin2022-ec2-policy"
   description = "Policy github actions ec2"
